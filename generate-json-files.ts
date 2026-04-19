@@ -1,5 +1,7 @@
 import path = require('path');
 import fs = require('fs');
+import parser = require('better-cue-parser');
+import {ICueSheet} from "better-cue-parser/lib/types";
 
 const DIGIT_DIR_REGEX = /^[0-9A-Z_-]$/;
 
@@ -7,9 +9,16 @@ generateJsonFiles('.');
 
 async function generateJsonFiles(rootDir: string) {
     const allCueFiles = await listAllCueFiles(rootDir);
+    const cuesheetsById: Record<string, ICueSheet> = {}
     for (const cueFile of allCueFiles) {
         console.log('Processing ' + cueFile) // TODO
+        const data = fs.readFileSync(cueFile, 'utf8');
+        const iCueSheet = parser.parse(data, 'utf8');
+
+        const id = path.basename(cueFile, '.cue');
+        cuesheetsById[id] = iCueSheet;
     }
+    fs.writeFileSync('cuesheets.json', JSON.stringify(cuesheetsById, null, 2));
 }
 
 async function listAllCueFiles(rootDir: string) {
