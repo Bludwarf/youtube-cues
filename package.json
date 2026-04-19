@@ -1,0 +1,26 @@
+{
+  "name": "youtube-cues",
+  "version": "2.0.0",
+  "description": "Cuesheet for any album on YouTube",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Bludwarf/youtube-cues.git"
+  },
+  "keywords": [
+    "youtube",
+    "cue"
+  ],
+  "author": "bludwarf@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bludwarf/youtube-cues/issues"
+  },
+  "homepage": "https://github.com/Bludwarf/youtube-cues#readme",
+  "dependencies": {
+    "@types/node": "^20.19.39"
+  }
+}
